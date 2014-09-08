@@ -1,0 +1,15 @@
+Resumo: 
+
+A manutenção em um software ocorre para a correção de bugs encontrados durante a execução do mesmo em produção, melhorar o desempenho ou para realizar adaptações. O tema se torna mais atrativo porque a etapa de manutenção de um software corresponde a mais da metade do valor de investimento total.
+
+Primeiramente o autor realizou uma revisão bibliográfica com os principais conceitos de manutenção de software. Levantou os principais problemas que interferem na manutenção de software. Posteriormente o autor realizou um estudo de caso em uma empresa que desenvolve e mantém um software comercial. Realizou um levantamento dos trabalhos correlatos. E por fim as conclusões e propostas.
+
+O autor verifica quais eram os principais problemas que ocorriam em manutenções de software segundo Lientz e Swanson. Em seu estudo de caso realiza um levantamento estatístico de dias, tipos, tempo de acordo com o numero total de solicitações. Problemas encontrados como falta de documentação, expectativa dos usuários, comunicação, equipe de manutenção, prazos não condizentes com a complexidade, baixa motivação, rotatividade da equipe, entre outros são recorrentes e os mesmos encontrados na década de 80. Na manutenção de software as questões de cunho gerencial são as que mais causam problemas se comparadas à aquelas de caráter técnico.
+
+
+
+Autores utilizados:
+  Dart et al.(1993)
+  IEE (1998)
+
+
