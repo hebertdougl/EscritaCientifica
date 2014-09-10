@@ -1,0 +1,66 @@
+Considerações sobre TCC
+
+16/06/2014 - Entrega texto impresso
+24, 25 e 27 do 06/2014 - Datas de apresentação
+
+======== Reunião Terça-feira, 25/03/2014 ==========
+
+Possível Título: Cenários de Refatoração Orientadas a Métricas: Uma Evolução do Monitoramento de Código Fonte Realizada pelo Mezuro
+
+Estrutura:
+	Introdução
+	Métricas/Design 
+	Mezuro/Coleta
+
+Data: Segunda semana de Junho, até dia 11 fechar o texto
+Apresentações: Última semana de Junho
+
+Proposta de Banca: 
+Antônio Soares Terceiro, Hilmer Rodrigues Neri, Diego Aranha, Maurício Aniche
+
+
+
+
+======== Reunião Terça-feira, 01/04/2014 ==========
+
+Passar pra Latex
+Começar a estudar sobre métricas de vunerabilidade/segurança
+Ver trabalho do Diego Aranha
+Ver tese de Doutorado Paulo
+	Cap Métricas
+	Cap 4
+
+
+
+======== Reunião Terça-feira, 08/04/2014 ==========
+
+Correlação de métricas de segurança X métricas de design OO
+Métricas prioritárias do NIST - Conversar com Charles e Athos
+
+
+
+======== Reunião Terça-feira, 15/04/2014 ==========
+
+Focar na escrita do capítulo teórico de métricas 
+
+
+======== Reunião Terça-feira, 22/04/2014 ==========
+
+É mais interessante colocar um novo extrator no Analizo ou abaixo do Kalibro para realizar estudo de caso sobre outras linguagens tal como Ruby, Python? 
+
+
+======== Reunião Terça-feira, 13/05/2014 ==========
+
+
+Juntar TCC com Carlos Filipe
+
+Título: Tomada de decisões orientadas a métricas de software: observações de métricas de produto e vulnerabilidades de software via DW e Plataforma de monitoramente de código-fonte.
+
+Pergunta de pesquisa Carlos: DW melhora as tomadas de decisão em relação aos ambientes web (outro ambiente de monitoramento de métricas)?
+	h1 = SIM
+
+Pergunta de pesquisa: Quão melhor é um DW como ambiente de tomada de decisões baseadas em métricas de software.
+
+Pergunta de pesquisa: Código mais complexo (métricas de produtos) são mais sujeitos à vulnerabilidades.
+
+

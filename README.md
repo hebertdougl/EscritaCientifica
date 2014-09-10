@@ -1,14 +1,15 @@
-#Template TCC FGA-UnB
+#TCC1 de Arthur de Moura Del Esposte & Carlos Filipe FGA-UnB
 
-Template para Trabalhos de Conclusão de Cursos (TCC) na Faculdade do
-Gama (FGA) em Latex.
+Aluno: Arthur de Moura Del Esposte  
+Aluno: Carlos Filipe
+Orientador: Prof. Dr. Paulo Roberto Miranda Meirelles
+Coorientador: Prof. Mr. Hilmer Rodrigues Neri
 
-Licenciado em Creative Commons Atribuição 3.0:
-http://creativecommons.org/licenses/by/3.0/
+Título: Tomada de decisões orientadas a métricas de software: observações de métricas de produto e vulnerabilidades de software via DW e Plataforma de monitoramente de código-fonte.
 
-Desenvolvido e adaptado pelo professor Edson Alves <edsomjr@gmail.com>.
+Esse trabalho utiliza o template desenvolvido e adaptado pelo professor Edson Alves <edsomjr@gmail.com> disponível em [Template TCC FGA](https://github.com/fga-unb/template-latex-tcc)
 
-## Instalando o abnTeX2
+## Instruções de instalação do abnTeX2
 
 ### Ubuntu 12.10 ou superior
 
@@ -94,7 +95,7 @@ Informações para instalar o abnTeX2 no Mac OS X:
 
 https://code.google.com/p/abntex2/wiki/InstalacaoMac
 
-## Compilando
+## Instruções de compilação do texto
 
 Para compilar o texto através do Makefile digite:
 

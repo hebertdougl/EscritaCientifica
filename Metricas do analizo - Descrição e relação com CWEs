@@ -1,0 +1,147 @@
+
+
+UninitializedArgumentValue - uav
+
+CWE - 457
+
+Esta vunerabilidade está relacionada ao código utilizar uma variável que não foi inicializada, podendo gerar resultados imprevisíveis ou não intencionais. Em algumas linguagens como o C e C++, as variáveis não são inicializadas por default, fazendo com que estas contenham lixo em seu conteúdo, não sendo confiável para a consistência do programa. Isso pode modificar o fluxo da aplicação e em alguns casos, pode-se "pré inicializar" essa variável para a execução de código malicioso.
+
+mitigação:
+Várias decisões podem ser tomadas para evitar esse tipo de vunerabilidade.
+Na etapa de implementação o desenvolvedor pode utilizar a estratégia de redução da superfície de ataque, assegurando que todas as variáveis foram setadas com um valor inicial. Outra maneira evitar a vunerabilidade é o uso do próprio compilador. A maioria dos compiladores oferencem a vizualização de variáveis não inicializadas se os "warnings" estiverem ligados. Na etapa de requisitos, pode-se optar por liguagens que não estão suscetiveis a esse tipo de vunerabilidade e inicializam a variável declarada com um valor default que não é lixo de memória.
+
+
+---------------------------------------
+Undefined allocation of 0 bytes (CERT MEM04-C; CWE-131) - ua
+
+
+
+---------------------------------------
+Stack address stored into global variable - saigv - CWE 562 (não é exatamente)
+
+---------------------------------------
+Return of stack variable address - rsva  - CWE 562
+
+Esta vunerabilidade acontece quando uma função retorna um endereço para uma variável que está alocada na pilha (stack). A pilha é o local onde variaveis temporárias são armazenadas, como variáveis declaradas dentro de funções. Se uma função declara uma variável dentro de seu escopo e usa esta mesma para seu retorno, temos o retorna de uma variável alocada na pilha. Ao termino da execução da função, a área de memória utilizada por esta fica disponível. Dessa forma, a proxima função chamada pode utilizar esse espaço de memória, sobrescrevendo o conteúdo que anteriomente foi retornado pela função anterior, podendo gerar comportamento inesperado no sistema ou até a quebra da aplicação. Este tipo de vunerabilidade é dificil de se identificar, sendo aconselhável o uso de ferramentas de análise estática de código.
+
+
+---------------------------------------
+Result of operation is garbage or undefined - rogu
+
+---------------------------------------
+Potential insecure temporary file in call 'mktemp' - pitfc - CWE 377
+
+Esta vunerabilidade ocorre quando um arquivo temporário inseguro é criado e usado pela aplicação, tornando a aplicação e o sistema de dados vuneráveis a ataques. Um arquivo criado pela aplicação é considerado inseguro quando ele é criado por mecanismos (funções específicas de APIs) que não geram arquivos com nomes únicos ou com nomes de randomização fraca. A função "mktemp" é um exemplo de mecanismo de geração de arquivos temporários que gera um nome unico para um arquivo com base em um prefixo passado pela própria aplicação. Porém, essa randomização gerada pelo mktemp é fraca, de maneira que outra aplicação maliciosa pode usar o mktemp passando o mesmo prefixo e conseguir gerar um arquivo com o mesmo nome, contendo código malicioso, ou mesmo utilizar deste arquivo para obter as informações que seriam salvas pela aplicação original. Uma maneira de previnir esse tipo de vunerabilidade é utilizar o próprio compilador, que gera uma aviso ao uso dessa função.
+
+---------------------------------------
+Out-of-bound array access - obaa - CWE 125
+
+Esta vunerabilidade acontece quando a aplicação tenta acessar um indice de array que está fora de seu range. O acesso de uma posição fora do array pode causar falha na execução (por exemplo, na linguagem C, falha de segmentação) como também a execução de código, pois a região de memória acessada pode conter condigo a ser executado ou até outras informações, impactando na confidencialidade de dados. Realizar a verificação de que o índice a ser lido está dentro do range do array  antes usa-lo para o acesso é uma boa pratica que pode evitar essa vunerabilidade
+
+
+
+---------------------------------------
+Offset free - osf - 
+
+
+
+---------------------------------------
+Memory leak - mlk - CWE 401
+
+O software não gerencia o uso de memória, provocando o consumo exessivo desta, podendo haver a falta de memória para a aplicação. Sem memória, a aplicação consegue funcionar corretamente, podendo gerar resultados inesperados como também a falha da aplicação. 
+
+
+
+---------------------------------------
+Double free - df - CWE 415
+
+Esta vunerabilidade ocorre na linguagem C, quando o programa realiza a chamada free() duas vezes para o mesmo ponteiro. Chamar duas vezes o free() para o mesmo ponteiro pode corromper a estrutura de dados do programa que gerencia a memória. Como consequência,  ( NAO ENTENDI A RELAÇÃO COM O BUFFER OVERFOW)
+
+
+---------------------------------------
+Divisions by zero - dbz - CWE 369
+
+Esta vunerabilidade acontece quando existe uma divisão de um valor por zero. Quando temos essa situação, o programa quebra. Essa vunerabilidade geralmente acontece quando um valor inesperado é passado para divisor do calculo ou ocorre algum erro que gere este valor. O melhor jeito de previnir é a realizar uma verificação que cheque se o divisor não é zero, e caso seja, deve-se implementar um tratamento, como por exemplo, o lançamento de excessoes.
+
+
+---------------------------------------
+Dereference of undefined pointer value - dupv
+
+Esta vunerabilidade ocorre quando um ponteiro que não foi inicializado é acessado. Esta vunerabilidade está relacionada a CWE 457 (Use Unitialized of variable) pois o ponteiro está indefindo pois nao foi inicializado. Portanto, as consequencias podem ser desde a leitura de lixo de memória até mesmo a falha da aplicação.
+
+---------------------------------------
+Dereference of null pointer - dnp - CWE 746
+
+Esta vunerabilidade ocorre quando um ponteiro é acessado e é esperado um valor válido, só que na verdade este ponteiro é nulo. Essa situação causa falha na aplicação. Esta vunerabilidade também está relacionada ao acesso de posição de um ponteiro que compõe um array, ocorrendo quando é feita a aritimética de ponteiros cujo o resultado está fora do tamanho alocado a este ponteiro.
+
+---------------------------------------
+Dead assignment - da - CWE 563(unused variable)
+(O caso de teste do analizo não deixa concluir se é esse mesmo o teste.. irei testar depois)
+Esta vunerabilidade é vista mais como indicação de má qualidade no código fonte. Se refere a variáveis que recebem um valor e não não mais usadas ou trocadas de valor sem qualquer uso anterior. Essa vunerabilidade pode ser uma indicação de um erro, podendo gerar novos erros e por consequencia a indrodução de fraquezas. A mitigação deste erro consiste em retirar variáveis não utilizadas na etapa de implementação.
+
+
+---------------------------------------
+Bad free - bf -
+Não encontrei nada sobre bad free, porem, me parece semelhante a Bad deallocator. talvez seja um dos casos do bad deallocator.
+
+---------------------------------------
+Bad deallocator - bd - CWE 404(Improper Resource Shutdown or Release) ou 762 (Mismatched Memory Management Routines)
+
+O analizo não deixa claro qual caso ele consegue pegar. Tentarei conversar com a galera do analizo para ver se sabem de qual CWE especifica está tratando.
+
+CWE 404 - 
+O programa não libera ou libera de forma incorreta um recurso antes de reutiliza-lo
+Forma de ataque: leitura de informação do recurso q não foi liberado.
+
+
+CWE - 590 Free of Memory not on the Heap
+Esse caso também se assemelha a má desalocação. No caso, o programa chama a função free() para um ponteiro que não foi alocado com malloc/realoc/calloc. Por exemplo, um vetor é declarado de forma int vetor[5]. Chamar o free (vetor) caracteriza esse caso.
+
+CWE  762-
+caso mais geral da CWE 590. Ocorre quando alocamos com uma função e desalocamos com uma função que não é equivalente.
+malloc/free, new/delete, and new[]/delete[] to allocate/deallocate 
+
+
+---------------------------------------
+Assigned value is garbage or undefined - auv
+%Não encontrei na CWEs 
+
+Esta vunerabilidade ocorre quando não temos certeza que o valor atribuido existe. Por exemplo, caso um array seja criado e preenchido com base na quantidade de elementos passados por parametro e logo em seguida uma variavel recebe o valor de uma posição desse array, caso o valor passado por parametro seja incompativel com o valor da posição do array a ser atribuido, a variávei receberá lixo de memória.
+
+ex
+int main(int argc, const char * argv[])
+{
+    int n = argc-1;
+    int *a = malloc(	sizeof(int));
+    for (int i=0; i<n; i++) {
+        a[i] = i;
+    }
+    int foo = a[0];
+    free(a);
+    return foo;
+}
+
+se não houver argumentos, "int foo = a[0];" será indefindo.
+
+
+---------------------------------------
+Argument with 'nonnull' attribute passed null - an
+
+
+
+
+
+Agrupamento
+
+#########
+Buffer Overflow
+
+Essas duas métricas estão relacionadas ao buffer overflow, de maneira específica
+---------------------------------------
+Potential buffer overflow in call to \'gets\' - fgbo - CWE 242
+
+Esta vunerabilidade está relacionada ao uso da função 'gets' da linguagem C que copia toda informação passada pelo input do programa para o buffer sem checar o tamanho do buffer. Dessa forma, caso o input seja maior que o buffer, haverá a sobrescrita da memória adjacente. Isso pode resultar em comportamento errado do programa, incluindo erros de acesso à memória, resultados incorretos, parada total do sistema, ou uma brecha num sistema de segurança. Esta vunerabilidade pode ser tratada com a utilizaçao de ferramentas de análise estática para identificar o uso dessa função perigosa, para que o desenvolvedor possa retira-la do código e utilizar outro mecanismo que não oferece um risco de overflow.
+---------------------------------------
+Allocator sizeof operand mismatch - asom
+
+Esta vunerabilidade consiste em passar o operador inadequado para o tamanho de uma alocação de memória. Por exemplo, a vunerabilidade ocorre quando temos um ponteiro para char e no momento de alocarmos a memória passarmos no sizeof um tipo int. Esse tipo de situação pode gerar um buffer overflow no momento da atribuição da variável.

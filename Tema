@@ -47,8 +47,11 @@ Seus comentários
 
 //Atualizando
 
+Levantar problemas que mais ocorrem, criar um grupo especifico de problemas e criar alguns padrões de manutenção
+
 Tema:
 	
+	Padrões de como implementar mudança em projetos de software livre
 	Manutenção em software livre
 
 Problema:
@@ -56,22 +59,26 @@ Problema:
 	Quais são as dificuldades em se (receber, analisar e priorizar) IMPLEMENTAR requisições de mudança em software livre?
 
 Justificativa:
+
+	A manutenção e evolução de software é uma das etapas mais críticas de um processo de desenvolvimento de software
 	é caro
 	Ngm quer fazer
-	
-
 
 Objetivo Geral:
-
-	Analizar o contexto de uma comunidade de software livre.
-	Levantar as principais dificuldades.
-	Analisar a priorização das contribuições realizadas pela comunidade.
+	
+	*Mitigar problemas de manutenção em software livre.
 
 Objetivos específicos:
-	
+
 	Verificar como funciona o mecanismo para requisições de mudança.
-	
-	Identificar quais os critérios utilizados para analisar e priorizar mudanças.
+
+	Identificar quais problemas principais em manutenção de software
+
+	Agrupar problemas de origem semelhante.
+
+	Priorizar quais as dificulades que causam mais impacto para desenvolvimento.
+
+	Definir padrões para requisição de mudança.
 
 Motivação:
 
@@ -79,10 +86,9 @@ Motivação:
 
 Palavras-Chave: 
 	
-	Manutenibilidade, Software-livre,
+	Padrões, Manutenibilidade, Software-livre,
 
-
-
+Levantar os problemas e mostrar como 
 
 Apresentação: 5 a 8 minutos
 Entrega: 

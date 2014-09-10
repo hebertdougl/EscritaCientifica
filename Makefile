@@ -1,4 +1,4 @@
-TARGET = TCC_FGA.pdf
+TARGET = TCC_ArthurCarlos.pdf
 
 BIBTEX = bibtex
 LATEX = latex
@@ -16,13 +16,19 @@ FIXOS_FILES = $(addprefix $(FIXOS_DIR)/, $(FIXOS_SOURCES))
 
 EDITAVEIS_DIR = editaveis
 EDITAVEIS_SOURCES = informacoes.tex errata.tex dedicatoria.tex \
-					agradecimentos.tex epigrafe.tex resumo.tex abstract.tex \
-					abreviaturas.tex simbolos.tex introducao.tex \
-					aspectosgerais.tex consideracoes.tex textoepostexto.tex \
-					elementosdotexto.tex elementosdopostexto.tex \
+					agradecimentos_arthur.tex \
+					agradecimentos_carlos.tex epigrafe.tex \
+					resumo.tex abstract.tex \
+					abreviaturas.tex simbolos.tex \
 					apendices.tex anexos.tex
 
 EDITAVEIS_FILES = $(addprefix $(EDITAVEIS_DIR)/, $(EDITAVEIS_SOURCES))
+
+CHAPTERS_DIR = capitulos
+CHAPTERS_SOURCES = 1-introducao.tex 2-metricas.tex \
+				   3-mezuro.tex
+
+CHAPTERS_FILES = $(addprefix $(CHAPTERS_DIR)/, $(CHAPTERS_SOURCES))
 
 MAIN_FILE = tcc.tex
 DVI_FILE  = $(addsuffix .dvi, $(basename $(MAIN_FILE)))
@@ -30,7 +36,7 @@ AUX_FILE  = $(addsuffix .aux, $(basename $(MAIN_FILE)))
 PS_FILE   = $(addsuffix .ps, $(basename $(MAIN_FILE)))
 PDF_FILE  = $(addsuffix .pdf, $(basename $(MAIN_FILE)))
 
-SOURCES = $(FIXOS_FILES) $(EDITAVEIS_FILES)
+SOURCES = $(FIXOS_FILES) $(EDITAVEIS_FILES) $(CHAPTERS_FILES)
 
 .PHONY: all clean dist-clean
 
@@ -49,7 +55,8 @@ $(TARGET): $(MAIN_FILE) $(SOURCES) bibliografia.bib
 clean:
 	rm -f *~ *.dvi *.ps *.backup *.aux *.log
 	rm -f *.lof *.lot *.bbl *.blg *.brf *.toc *.idx
-	rm -f *.pdf
+	rm -f tcc.pdf TCC_ArthurCarlos.pdf
+	rm -f *.synctex.gz
 	
 dist: clean
 	tar vczf tcc-fga-latex-$(VERSION).tar.gz *

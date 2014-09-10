@@ -1,0 +1,297 @@
+\chapter{Cenários de Decisões}
+\label{cap-cenarios}
+
+Neste capítulo será apresentado o conceito de Cenários de Decisões, que visa contemplar um dos objetivos principais da presente monografia: Definição de cenários a partir de estudos teóricos para melhorar a interpretação e tomada de decisão sobre métricas estáticas de código-fonte. No Capítulo \ref{cap-metrics} foi apresentada a importância do \emph{design} de software. Além disso, discutimos o papel do Engenheiro de Software no desenvolvimento de códigos com \emph{design} robusto, limpo e seguro, explorando os principais conceitos, problemas, princípios e práticas que este profissional deve conhecer para alcançar este objetivo. 
+
+%
+
+Na seção \ref{sec-metrics-esw} do Capítulo \ref{cap-metrics} ainda foram introduzidos temas relacionados ao monitoramento de código-fonte, métricas de design de software e métricas de vulnerabilidades. Aferimos que apesar de vários estudos relacionados à utilização de métricas de código-fonte ainda existem muitas dificuldades da adoção prática de métricas de código-fonte em projetos reais de Software. Deve-se enfatizar que métricas não resolvem problemas e sim as pessoas \cite{westfall2005}. Métricas de software atuam como indicadores para prover informação, entendimento, avaliação, controle e predição para que as pessoas possam fazer escolhas e ações. Neste sentido, no presente capítulo buscamos reduzir a distância entre a medição do código-fonte e tomada de decisões por Engenheiros de Software através da proposta de Cenários de Decisões.
+
+%
+
+A ideia de definição de cenários para tomada de decisões é advinda do estudo realizado por Almeira \& Miranda (\citeyear{almeida2010}) sobre mapeamento de métricas de código-fonte com os conceitos de Código Limpo. Neste cápitulo, extendemos este estudo e propomos o conceito de Cenários de Decisões como uma técnica que pode ser utilizada na abstração de métricas para facilitar o monitoramento de código-fonte. Cenários de Decisões nomeiam e mapeiam estados observáveis através de métricas de código-fonte que indicam a existência de determinada característica dentro do software, classe ou método. Um Cenário de Decisão é composto por:
+
+%
+
+\begin{itemize}
+\item \textbf{Nome}: Identificação única do cenário. Deve ser significativo para prover a compreensão do estado que o cenário representa.
+\item \textbf{Métricas Envolvidas}: Identifica as métricas necessárias para a caracterização do cenário, sem definir relações entre essas métricas.
+\item \textbf{Nível}: Define abstração de software que pode ser caracterizada pelo cenário, por exemplo: Projeto; Estrutura de Herança; Classe; Método;
+\item \textbf{Descrição}: Discuti os problemas, princípios envolvidos e a caracterização
+\item \textbf{Caracterização com Métricas}: Define e discuti como as métricas envolvidas devem ser utilizadas para identificar o cenário. Pode definir a composição destas métricas ou a interpretação conjunta necessária.
+\item \textbf{Ações sugeridas}: Propõe um conjunto de ações específicas tais como uma refatoração, a utilização de um padrão de projeto, prática e aplicação de princípios.
+\end{itemize}
+
+%
+
+Cenários de Decisões ainda podem ser classificados de três formas diferentes baseados nas diferentes formas de utilização de métricas para a caracterização do mesmo:
+
+\begin{itemize}
+\item \textbf{Monométrico\footnote{Monométrico: de uma só medida}}: Classificação de cenário que pode ser caracterizado por apenas uma métrica, não havendo a necessidade de observação de outras variáveis para que o cenário seja identificado.
+\item \textbf{Polimétrico\footnote{Polimétrico: que apresenta ou emprega uma variedade de medidas}}: Classificação de cenário que precisa da interpretação de duas ou mais métricas para ser caracterizado. Cenários polimétricos são menos acoplados a escolha de métricas uma vez que sua identificação depende de mais de uma métrica, podendo ser uma caracterização mais completa de um cenário monométrico. 
+\item \textbf{Composto\footnote{Composto: formado de diversas partes}}: Classificação de cenário que é caracterizado a partir de uma métrica composta por outras métricas a partir de fórmulas matemáticas.
+\end{itemize}
+
+
+O objetivo da definição de Cenários é minimizar as principais dificuldades existentes na medição do código-fonte:
+
+%
+
+\begin{itemize}
+\item \textbf{Escolha de Métricas}: Cada cenário é composto por um conjunto de métricas que devem ser utilizadas para aferir a ocorrência do mesmo. Neste sentido, caso se queira observar se um software possui um determinado cenário de vulnerabilidade específica, por exemplo, o Engenheiro de Software ou Gerente devem se preocupar apenas sobre a escolha correta do cenário, abstraindo a escolha de métricas específicas.
+\item \textbf{Interpretação de Valores}: A ocorrência de um cenário em algum trecho específico do código deve ser, por si só, o suficiente para o entendimento e avaliação do estado de \emph{design} deste trecho, não havendo a necessidade de ter que se interpretar os valores obtidos. A existência de um cenário ruim específico em um  método deve prover o entendimento necessário para que o Engenheiro de Software realize ações para remoção deste cenário.
+\item \textbf{Redundância de Métricas}: Existem muitas métricas na Engenharia de Software que podem ser utilizadas para medir a mesma característica do software tais como tamanho, complexidade e coesão. Compreender cada uma delas e suas intersecções é uma tarefa dispendiosa, dificultando a escolha adequada de métricas que avaliem bem os elementos do software sem redundância de informação. A redundância de métricas não é algo desejado em projetos de software uma vez que a medição é um processo complexo e caro. Cenários idealmente devem ser estabelecidos a partir de estudos e experimentos. Assim, métricas consideradas redundantes podem ser eliminadas a partir da definição de cenários ou podem ser necessárias para a identificação de cenários diferentes para os quais essas métricas agregam alguma informação.
+\item \textbf{Interpretações Isoladas}: Podem existir métricas que possam ser utilizadas para a identificação de um cenário específico sem a necessidade de uso de outras métricas. Entretanto, na maioria dos casos uma métrica não provê informação suficiente a ponto de poder ser interpretada isoladamente. Assim, Cenários de Decisões diminuem o risco de interpretações isoladas inadequadas, pois reunem um conjunto de métricas necessários para sua caracterização. Mesmo quando um cenário é composto por uma métrica específica, ele oferece um nível de abstração e interpretação que diminui as possibilidades de erros de interpretação.
+\item \textbf{Parâmetros de Comparação}: Os cenários definem uma interpretação a partir de um conjunto de métricas, mas não especificando valores de intervalos necessários para caracterizar este cenário. Assim, um cenário deve ser adaptável para diferentes contextos devido a importância de se flexibilizar as interpretações de métricas, tema discutido e defendido por Meirelles (\citeyear{meirelles2013metrics}). Sugere-se que a escolha dos parâmetros adequados para caracterização do cenário deve ser feita por especialistas que compreendam as necessidades de seus projetos e as limitações e recursos da linguagem e paradigma de programação utilizados no software. Portanto, a escolha dos valores para caracterização de um cenário é a instanciação deste cenário para um contexto específico. Nesta monografia, além da proposta de cenários, também iremos propor instâncias destes cenários para determinados contextos.
+\end{itemize}
+
+%
+
+Com os Cenários de Decisões introduzimos um novo conceito a ser utilizado na medição de software. Espera-se que o esforço destinado a medição de software em um projeto seja concentrado sobre a instanciação destes cenários, diminuindo-se o esforço necessário para coleta, interpretação e viusalização de dados. Entretanto, os benefícios dos Cenários de Decisões são passíveis de experimentação, experimentos esses que estão fora do escopo deste trabalho.
+
+%
+
+
+%
+
+%http://estudijas.lu.lv/pluginfile.php/317090/mod_resource/content/1/metrics_traps_to_avoid.pdf
+%http://swerl.tudelft.nl/twiki/pub/Main/TechnicalReports/TUD-SERG-2013-003.pdf
+%http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.384.7471
+
+%------------------------------------------------------------------------------%
+
+\section{Definição de Cenários de Decisão para Vulnerabilidades de Software}
+
+A revisão teórica feita nesta monografia encontrada no capítulo (\ref{cap-metrics}) a respeito de características de bom \emph{design} e vulnerabilidades de software nos permite afirmar que a qualidade do código está diretamente relacionada a vulnerabilidades, visto que um código que possui alta complexidade, baixa modularização, alto acoplamento, entre outras caracteristicas apresentdas na seção (\ref{sec-principles-practises}) são mais fáceis de inserir vulnerabilidades e dificultam a descoberta de vulnerabilidades já existentes. Na seção (\ref{sec-security-principles}) foi visto também que muitos princípios de segurança de software estão relacionados ao \emph{design} do código. Visto isso, a aplicação de boas práticas de \emph{design} de código se torna essencial para o desenvolvimento de softwares seguros.
+
+%
+
+Porém, vulnerabilidades de software não ocorrem somente em códigos com mal \emph{design}. Na seção (\ref{subsec-vulnerabilities-taxonomy}) foi visto que existe uma gama de vulnerabilidades específicas catalogadas pela comunidade, e muitas destas vulnerabilidades foram descobertas e reportadas por grandes empresas de softwares renomados no mercado, que muito provavelmente são bem maduras em relação a qualidade de seus produtos. Foi visto também que muitas das vulnerabilidades de software que são identificadas por ferramentas de análise estática (seção \ref{subsec-security-metrics}) são vulnerabilidaddes específicas de uso de códigos, funções ou práticas consideradas perigosas para segurança da aplicação. Tais vulnerabilidades podem ser encontradas no código fonte indepentente da aplicação de boas práticas de \emph{design}, pois tais vulnerabilidades são difíceis de identificar pois necessitam do conhecimento mais aprofundado do Engenheiro de Software para que este saiba que está inserindo uma vulnerabilidade no código.
+
+%
+
+Dessa forma, para o contexto de vulnerabilidades do software, podemos definir dois tipos de cenários de decisão:
+
+%
+
+\begin{itemize}
+\item \textbf{Cenários de Decisão para Caracterização da Qualidade de Código}: Estes cenários buscam identificar caracteristicas de software relacionadas a qualidade e design de código que podem influenciar em sua segurança, como complexidade, acoplamento, etc.
+\item \textbf{Cenários de Decisão para Caracterização de Vulnerabilidades espefífica de código}: Estes cenários buscam identificar vulnerabilidades de software que podem ser encontradas em código-fonte indepente que este esteja em um bom nível de qualidade e design. São cenários relacionados mais a erros que podem ser cometidos pelos desenvolvedores no momento da implementação;
+\end{itemize}
+
+%
+
+\subsubsection{Cenários de Decisão para Caracterização da Qualidade do Código }
+
+%
+
+\textbf{Alta Superfície de Ataque a Atributos Internos}
+
+%
+
+Este cenário busca identificar a violação do princípio de \emph{design} de segurança Redução da Superfície de Ataque (Seção \ref{sec-security-principles}) em relação aos atributos de um objeto. Este princípio se baseia fundamentalmente na redução da exposição das estruturas do sistema em relação a interações externas. Em termos de \emph{design}, diminuição do acesso as informações internas da classe podem ser obtidos a partir de um maior grau de encapsulamento das estruturas que compõem esta classe. 
+
+%
+
+Em termos de métricas de código-fonte, este cenário busca medir o tamanho da superfície de ataque aos atributos de uma classe. Estão inclusos nesse cenário classes ou módulos que tenham um alto valor de quantidade de atributos públicos. 
+
+%
+
+Quadro resumo:
+
+\begin{itemize}
+\item \textbf{Nome}: Alta Superfície de Ataque
+\item \textbf{Classificação}: Composta;
+\item \textbf{Métricas Envolvidas}: NPA (Número de Atributos Públicos), NOA (Número de Atributos);
+\item \textbf{Nível}: Classe;
+\item \textbf{Descrição}: Esse cenário busca identificar classes que possuem muita exposição devido ao alto número de atributos públicos, violando o princípio de \emph{design} seguro Redução de Superfície de Ataque.
+\item \textbf{Caracterização com Métricas}: 
+	\begin{itemize}
+	\item \textbf{Composição NPA/NOA} - Caracteriza o tamanho da superfície de ataque a atributos em percentagem. O cenário existe quando o valor desta métrica composta está acima do valor estipulado.
+	\end{itemize}
+\item \textbf{Ações sugeridas}:
+	\begin{itemize}
+	\item \textbf{Refatorações aplicáveis:} - \emph{Encapsulate Field}\footnote{\url{http://refactoring.com/catalog/encapsulateField.html}}.
+	\item \textbf{Princípios aplicáveis à classe} - Princípio e Redução de Superfície de Ataque; Princípio de Encapsulamento;
+	\end{itemize}
+\end{itemize}
+
+%
+
+\textbf{Alta Superfície de Ataque Operacional}
+
+%
+
+Este cenário busca identificar a violação do princípio de \emph{design} de segurança Redução da Superfície de Ataque (Seção \ref{sec-security-principles}) em relação aos métodos de uma classe. Este princípio se baseia fundamentalmente na redução da exposição das estruturas do sistema em relação as manipulações e operações realizadas pelos métodos da classe. Em termos de \emph{design}, quanto maior a quantidade de métodos públicos, maior a quantidade de interações possíveis com um objeto o que dificulta a aplicação do princípio \emph{Mediate Completely} (Seção \ref{sec-security-principles}), o que aumenta a vulnerabilidade das operações. Além disso, a dependência de parâmetros externos para realização de operações internas pode expor maiores detalhes dos mecanismos e algoritmos das classes de um projeto, sendo resultado do baixo grau de encapsulamento das operações, além de aumentar riscos de ataques e dificuldades de correção de problemas de segurança. 
+
+%
+
+Em termos de métricas de código-fonte, este cenário busca medir o tamanho da superfície de ataque através de operações acessíveis de uma classe e os parâmetros necessários para sua realização. Estão inclusos nesse cenário classes ou módulos que tenham um alto valor de quantidade de métodos públicos e que tenham grande quantidade de parâmetros. 
+
+%
+
+Quadro resumo:
+
+\begin{itemize}
+\item \textbf{Nome}: Alta Superfície de Ataque Operacional
+\item \textbf{Classificação}: Polimétrico;
+\item \textbf{Métricas Envolvidas}: NPM (Número de Métodos Públicos), MNPM (Número Máximo de Parâmetros por Método); 
+\item \textbf{Nível}: Classe;
+\item \textbf{Descrição}: Esse cenário busca identificar classes que devem receber maior atenção em relação à aplicação do princípio \emph{Mediate Completely} devido à grande exposição da classe em termos operacionais. Este cenário indica que a aplicação do princípio de \emph{design} seguro Redução de Superfície de Ataque pode melhorar o \emph{design} da classe uma vez que as definições e abstrações de seus métodos são reestruturadas.
+\item \textbf{Caracterização com Métricas}: 
+	\begin{itemize}
+	\item \textbf{NPM} - Caracteriza a quantidade de interações possíveis para as quais o princípio \emph{Mediate Completely} deve ser aplicado. O cenário pode existir caso os valores desta métrica esteja acima do estipulado;
+	\item \textbf{MNPM} - Caracteriza a quantidade de informações que poderiam ser verificadas para evitar ataques externos. O cenário pode existir caso os valores desta métrica esteja acima do estipulado; 
+	\end{itemize}
+\item \textbf{Ações sugeridas}: 
+	\begin{itemize}
+	\item \textbf{Refatorações aplicáveis aos métodos da classe} - \emph{Hide Method}\footnote{\url{http://refactoring.com/catalog/hideMethod.html}}; \emph{Remove Parameter}\footnote{\url{http://refactoring.com/catalog/removeParameter.html}};
+	\item \textbf{Princípios aplicáveis à classe} - Princípio e Redução de Superfície de Ataque; Princípio de Encapsulamento; Princípios de Distribuição de Responsabilidades GRASP \cite{larman2007};
+	\item \textbf{Padrões aplicáveis no projeto para reduzir a ocorrência deste cenário} - Padrão \emph{Facade}\footnote{\url{http://sourcemaking.com/design_patterns/facade}};
+	\end{itemize}
+\end{itemize}
+
+%
+
+\textbf{Ponto Crítico de Falha}
+
+%
+
+Este cenário busca identificar a ocorrência de classes ou módulos que concentram muitas responsabilidades das quais muitas outras classes dependem. Este cenário é problemático uma vez que a classe das quais muitas outras classes dependem, em caso de falhas e exploração de vulnerabilidades tendem a afetar muitas outras estruturas do projeto. Além disso, a alta concentração de dependências em uma classe pode ser devido a inadequada distribuição de responsabilidades entre os módulos que compõem o projeto.
+
+%
+
+Em termos de métricas de código-fonte, este cenário é caracterizado a partir da medição da quatindade de classes que dependem da classe em análise. Esta dependência deve ser considerada em termos de acesso à métodos, acesso à atributos e herança. 
+
+%
+
+Quadro resumo:
+
+\begin{itemize}
+\item \textbf{Nome}: Ponto Crítico de Falha
+\item \textbf{Classificação}: Composto
+\item \textbf{Métricas Envolvidas}: ACC (Conexões Aferentes por Classe), NOC (Número de Filhos)
+\item \textbf{Nível}: Classe;
+\item \textbf{Descrição}: Esse cenário busca identificar classes que potencialmente são pontos críticos do projeto de software. Classes que são caracterizadas com este cenário devem ser cuidadosamente repensadas em termos de responsabilidades para não ser permanecerem sendo potenciais pontos críticos do projetos, uma vez que falhas e exploração de vulnerabilidades podem comprometer toda a estrutura acoplada a ela.
+\item \textbf{Caracterização com Métricas}: 
+	\begin{itemize}
+	\item \textbf{Composição ACC + NOC} - Caracteriza a quantidade de classes acopladas à classe em análise, tanto em termos de acesso à métodos e atributos quanto em termos de herança. Este cenário existe quando o valor calculado através desta composição, ou seja, o número de classes acopladas a classe em análise é superior ao valor definido para o projeto.
+	\end{itemize}
+\item \textbf{Ações sugeridas}: 
+	\begin{itemize}
+	\item \textbf{Refatorações aplicáveis aos métodos da classe} - \emph{Extract Class}\footnote{\url{http://refactoring.com/catalog/extractClass.html}}, \emph{Move Method}\footnote{\url{http://refactoring.com/catalog/moveMethod.html}}, \emph{Push Down Method}\footnote{\url{http://refactoring.com/catalog/pushDownMethod.html}};
+	\item \textbf{Princípios aplicáveis à classe} - Princípios de bom \emph{design}: Modularização, Baixo Acoplamento; Princípio de Encapsulamento; Princípios de Distribuição de Responsabilidades GRASP \cite{larman2007};
+	\end{itemize}
+\end{itemize}
+
+\subsubsection{Cenários de Decisão para Caracterização de Vulnerabilidades Específicas de Código}
+
+%
+
+\textbf{Entradas não validadas}
+
+Este cenário busca identificar situações no código fonte onde valor de uma entrada de usuário é passado para uma variável sem que tenha sido feito, antes da atribuição e uso, uma verificação desse dado de entrada. Essa vulnerabilidade é catalogada no padrão CWE como CWE-20 \footnote{\url{http://cwe.mitre.org/data/definitions/20.html}}, que é classificada como uma classe que inclui diversas vulnerabilidades com mais nível de detalhe relacionadas a não validação. A não validação de atributos de entrada de usuário pode implicar em diversos riscos para a aplicação. Com essa vulnerabilidade podem ser exploradas vulnerabilidades  mais específica como \emph{Buffer Overflow}, \emph{SQL injection} e \emph{XSS}, permitindo ao atacante inserir valores inesperados, podendo causar a quebra da aplicação; ler arquivos confidenciais por manipulação do do programa, como por exemplo o uso de \emph{SQL injection}; como também pode modificar dados ou mudar o fluxo de programa explorando o \emph{Buffer Overflow}.
+
+%
+
+Em termos de métricas de código fonte, este cenário busca medir a quantidade de vulnerabilidades que identificam a ocorrência da não verificação dos parâmetros de entrada. As métricas AUV (\emph{Assigned value is garbage or undefined}) e FGBO (\emph{Potential Buffer Overflow in call to "gets"}), descritas na Seção (\ref{subsec-security-metrics}) medem a quantidade de vulnerabilidades relacionadas a não validação de entradas na linguagem C/C++. 
+
+%
+
+Para tratar este cenário deve ser feita a verificação e tratamento do dado de entrada antes de seu uso para se certificar que a informação está realmente condizente ao contexto. Então pode ser interessante a criação de uma lista de valores válidos ou determinação de regras para a verificação desses dados de entrada. Também vale a criação de mecanismos que limitem o tamanho do \emph{buffer} de entrada para que não haja estouro do mesmo.
+
+
+Quadro resumo:
+
+\begin{itemize}
+\item \textbf{Nome}: Entradas não validadas
+\item \textbf{Classificação}: Composta
+\item \textbf{Métricas Envolvidas}: AUV (\emph{Assigned value is garbage or undefined}) e FGBO (\emph{Potential Buffer Overflow in call to "gets"}) 
+\item \textbf{Nível}: Método;
+\item \textbf{Descrição}: Esse cenário busca identificar parâmetros de entrada de usuário que não são validados ou verificados, e posteriormente são utilizados pela aplicação. Nessa situação, não temos certeza o real valor que foi passado como entrada, podendo causar desde comportamento inesperado da aplicação até quebra e leitura de dados confidenciais.
+\item \textbf{Caracterização com Métricas}: 
+	\begin{itemize}
+	\item \textbf{Composição AUV+FGBO} - Aponta linhas do código em que se encontram a variáveis que podem ter o valor indefinido ou com lixo obtidos na entrada do programa e também o uso da função \emph{gets}. Este cenário existe quando o valor calculado desta métrica é diferente de zero, ou seja, esse cenário existe se tiver pelo menos uma ocorrencia dessa métrica no código fonte
+	\end{itemize}
+\item \textbf{Ações sugeridas}: 
+	\begin{itemize}
+	\item \textbf{Implementar mecanismos de validação} - A implementação de mecanismos de verificação da integridade e consistência do dado de entrada ajuda a garantir que esta entrada não seja indefinida ou lixo.
+	\item \textbf{Substituir chamadas para a função \emph{"gets"}} - Caso não seja possível utilizar de recurso de interface gráfica para a limitação do tamanho de entrada do usuário,  a função \emph{"fgets()"} pode ser utilizada no lugar da função  \emph{"gets"}, pois aquela possui um parâmetro em sua chamada que indica o tamanho maximo do buffer. 
+	\end{itemize}
+\end{itemize}
+
+%------------------------------------------------------------------------------%
+
+\begin{description}
+	\item [Variáveis não inicializadas]\
+\end{description}
+
+Este cenário busca identificar o uso de variáveis não inicializadas. Este cenário também é definido pela CWE-457 \footnote{http://cwe.mitre.org/data/definitions/457.html}. A declaração de variáveis em algumas linguagens, como C, Perl  e PHP, não inicializam estas variáveis com valores default. Com isso, variáveis que são criadas na pilha de memória podem conter em seus valores lixo ou até comandos e valores de outras funções e variáveis que também utilizaram da mesma área de memória em outro instante. Essa situação é perigosa pois tanto a aplicação pode apresentar resultados inesperados como também um atacante pode visualizar informações contidas nessa variável que ele não estaria autorizado a ver. 
+
+%
+
+Muitas vezes podem ocorrer de existir uma estrutura de controle de fluxo de execução de código (como \emph{if else} e \emph{switch case}) que definem a situação em que a variável irá ser inicializada e, ao sair dessa estrutura de controle de fluxo, a variável é finalmente utilizada. Nessa situação, pode ocorrer da aplicação não passar pelo fluxo que inicializa a variável. Dessa forma, ao sair do fluxo, o programa irá usar a variável que não foi inicializada.
+
+%
+
+Em termos de métricas de código fonte, este cenário busca medir a quantidade de variáveis não inicializadas. A métrica UAV (\emph{Uninitialized Argument Value}) busca medir exatamente essa vulnerabilidade.
+
+Quadro resumo:
+
+\begin{itemize}
+\item \textbf{Nome}: Variáveis não inicializadas
+\item \textbf{Classificação}: Monométrica;
+\item \textbf{Métricas Envolvidas}: UAV (\emph{Uninitialized Argument Value});
+\item \textbf{Nível}: Método;
+\item \textbf{Descrição}: Este cenário busca identificar o uso de variáveis não inicializadas, pois isso pode causar desde falhas na aplicação quanto acesso a informaçãõ não autorizado.
+\item \textbf{Caracterização com Métricas}: 
+	\begin{itemize}
+	\item \textbf{UAV} - Este cenário ocorre quando existe ao menos uma ocorrência dessa vulnerabilidade.
+	\end{itemize}
+\item \textbf{Ações sugeridas}: 
+	\begin{itemize}
+	\item \textbf{Princípios aplicáveis} - Redução da superfície de ataque, inicializando variáveis no momento em que são instanciadas.
+	\end{itemize}
+\end{itemize}
+
+
+\begin{landscape}
+
+	\begin{table}[H]
+		\begin{center}
+	    \begin{tabular}{ |p{2,5cm}| p{3cm} | p{2cm} | p{5cm} | p{5cm}  | p{5cm}  |}
+	    \hline
+	    \textbf{Cenário} & \textbf{Caracterização} & \textbf{Nível do} & \textbf{Descrição} & \textbf{Caracterização} & \textbf{Ações Sugeridas} \\
+	      & \textbf{do cenário} & \textbf{cenário} &  & \textbf{com Métricas} & \\ 	\hline
+	    Alta Superfície de Ataque a Atributos Internos & Qualidade de código & Classe & Busca diminuir a exposição da classes em relação aos seus atributos públicos & Valor alto de NPA/NOA &  \textbf{Refatorações}: Encapsulate Field; \textbf{Aplicar Princípios}:Redução da superfície de ataque, Princípio de encapsulamento \\ \hline
+
+	    Alta Superfície de Ataque Operacional & Qualidade de código & Classe & Esse cenário busca identificar classes que devem receber maior atenção em relação à aplicação do princípio Mediate Completely devido à grande exposição da classe em termos operacionais.& Valor alto de número NPM e MNPM & \textbf{Refatorações}: Hide Method; Remove Parameter; \textbf{Aplicar Princípios}:Princípio e Redução de Superfície de Ataque;
+Princípio de Encapsulamento; Princípios de Distribuição de Responsabilidades GRASP; \textbf{Aplicar padõres}: Padrão facade\\ \hline
+
+	    \end{tabular}
+		    \caption{Parte I - Resumo de todos os cenários propostos para o monitoramento da segurança de software}
+		    \label{tab:resumoI}
+		\end{center}
+	\end{table}
+
+	\begin{table}[H]
+		\begin{center}
+	    \begin{tabular}{ |p{2,5cm}| p{3cm} | p{2cm} | p{5cm} | p{5cm}  | p{5cm}  |}
+	    \hline
+	    \textbf{Cenário} & \textbf{Caracterização} & \textbf{Nível do} & \textbf{Descrição} & \textbf{Caracterização} & \textbf{Ações Sugeridas} \\
+	      & \textbf{do cenário} & \textbf{cenário} &  & \textbf{com Métricas} & \\ 	\hline
+	    
+	    Ponto Crítico de Falha & Qualidade de código & Classe & Este cenário busca identificar classes muito acopladas, que representam pontos críticos da aplicação & Alto valor de ACC+NOC & \textbf{Refatorações}: Extract Class, Move Method, Push Down Method; \textbf{Aplicar Princípios}:Modularização, Baixo Acoplamento; Princípio de Encapsulamento; Princípios de Distribuição de Responsabilidades GRASP \\
+	 \hline
+	    Entradas não validadas  & Vulnerabilidade específica & Método & Busca indentificar a não ocorrencia de validação de variáveis de entrada por outros mecanismos e também pelo uso da função \emph{gets} & Ao menos uma ocorrência da métrica FGBO ou AUV & Implementar mecanismos validação de entrada de usuário ; substituir função \emph{gets} pela \emph{fgets} \\ \hline
+	    Variáveis não inicializadas  & Vulnerabilidade específica & Método & Variáveis não inicializadas podem causar falha da aplicação ou acesso não autorizado de informações caso sejam utilizadas & Ao menos uma ocorrência da métrica UAV & Inicializar variáveis sempre que criar uma\\ \hline
+
+	    \end{tabular}
+		    \caption{Parte II - Resumo de todos os cenários propostos para o monitoramento da segurança de software}
+		    \label{tab:resumo2}
+		\end{center}
+	\end{table}
+
+
+\end{landscape}
+
