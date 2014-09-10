@@ -47,19 +47,59 @@ Seus comentários
 
 //Atualizando
 
-Tema: Dificuldades em manutenção de software livre, um estudo de caso Noosfero.
-
-Justificativa:
+Tema:
+	
+	Manutenção em software livre
 
 Problema:
+
+	Quais são as dificuldades em se (receber, analisar e priorizar) IMPLEMENTAR requisições de mudança em software livre?
+
+Justificativa:
+	é caro
+	Ngm quer fazer
+	
+
+
+Objetivo Geral:
+
+	Analizar o contexto de uma comunidade de software livre.
+	Levantar as principais dificuldades.
+	Analisar a priorização das contribuições realizadas pela comunidade.
+
+Objetivos específicos:
+	
+	Verificar como funciona o mecanismo para requisições de mudança.
+	
+	Identificar quais os critérios utilizados para analisar e priorizar mudanças.
+
+Motivação:
+
+	O conhecimento sobre a manutenibilidade de software livre
+
+Palavras-Chave: 
+	
+	Manutenibilidade, Software-livre,
+
+
+
+
+Apresentação: 5 a 8 minutos
+Entrega: 
+	-1 impresso
+	-1 moodle
+Conteudo:
+	-Aprensentação do tema
+	-Problemas ou Questões
+	-Justificativa/Motivação/Hipóteses
+	-Objetivos
+	-Metodologia (Classificação e fases/ etapas da pesquisa)
+
+
+Quais as dificuldades encontradas pela comunidade na realização de manutenção de software livre
+
+Qual a maneira que a comunidade de software 
 As limitações e problemas que ocasionam a dificuldade de manutenção.
 As barreiras que levam a dificuldade de manutenção.
+
 CAUSA: O mecanismo utilizado para manutenção não é efetivo.
-
-
-Objetivos
-
-Motivação: O conhecimento sobre a manutenibilidade de software livre
-
-Palavras-Chave: Manutenibilidade, Software-livre,
-
