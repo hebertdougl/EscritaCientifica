@@ -47,9 +47,17 @@ Seus comentários
 
 //Atualizando
 
-Tema: Manutenção e evolução de software livre
+Tema: Dificuldades em manutenção de software livre, um estudo de caso Noosfero.
+
+Justificativa:
 
 Problema:
+As limitações e problemas que ocasionam a dificuldade de manutenção.
+As barreiras que levam a dificuldade de manutenção.
+CAUSA: O mecanismo utilizado para manutenção não é efetivo.
+
+
+Objetivos
 
 Motivação: O conhecimento sobre a manutenibilidade de software livre
 
