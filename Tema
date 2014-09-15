@@ -51,6 +51,8 @@ Levantar problemas que mais ocorrem, criar um grupo especifico de problemas e cr
 
 Tema:
 	
+	Propor padrões para a manutenção em software livre
+	Desenvolvimento de padrões para a implementação de mudança de software livre
 	Padrões de como implementar mudança em projetos de software livre
 	Manutenção em software livre
 
@@ -78,7 +80,7 @@ Objetivos específicos:
 
 	Priorizar quais as dificulades que causam mais impacto para desenvolvimento.
 
-	Definir padrões para requisição de mudança.
+	Propor padrões para requisição de mudança.
 
 Motivação:
 
@@ -109,3 +111,20 @@ As limitações e problemas que ocasionam a dificuldade de manutenção.
 As barreiras que levam a dificuldade de manutenção.
 
 CAUSA: O mecanismo utilizado para manutenção não é efetivo.
+
+5 - Pressman, Roger S. "Software Engineering: a practitioner's approach". New york: McGraw Hill, 5th ed.,860p
+7 - Hanna, M. "Maintence Burden Begging for Remedy". Software Magazine , April 1993, pp 53-63
+8 - IEE, Institute 1219
+ISO12207
+18 - Sneed, H.M. "Critical Sucess Factors in Software Maintenance". In: International Conference on Software Maintenance, 2003, 9p.
+
+(IEEE, 1998).
+Pfleeger (2001)
+Polo et al. (1999)
+ISO/IEC 12207
+Pressman (2005)
+Sommerville(2003)
+Lehman (1996)
+(Bhatt et al., 2004).
+(Lientz & Swanson, 1980)
+(SWEBOK, 2004),

@@ -1,4 +1,4 @@
-TARGET = TCC_ArthurCarlos.pdf
+TARGET = Artigo.pdf
 
 BIBTEX = bibtex
 LATEX = latex
@@ -16,8 +16,8 @@ FIXOS_FILES = $(addprefix $(FIXOS_DIR)/, $(FIXOS_SOURCES))
 
 EDITAVEIS_DIR = editaveis
 EDITAVEIS_SOURCES = informacoes.tex errata.tex dedicatoria.tex \
-					agradecimentos_arthur.tex \
-					agradecimentos_carlos.tex epigrafe.tex \
+					agradecimentos.tex \
+					epigrafe.tex \
 					resumo.tex abstract.tex \
 					abreviaturas.tex simbolos.tex \
 					apendices.tex anexos.tex
@@ -55,7 +55,7 @@ $(TARGET): $(MAIN_FILE) $(SOURCES) bibliografia.bib
 clean:
 	rm -f *~ *.dvi *.ps *.backup *.aux *.log
 	rm -f *.lof *.lot *.bbl *.blg *.brf *.toc *.idx
-	rm -f tcc.pdf TCC_ArthurCarlos.pdf
+	rm -f tcc.pdf Artigo.pdf
 	rm -f *.synctex.gz
 	
 dist: clean
